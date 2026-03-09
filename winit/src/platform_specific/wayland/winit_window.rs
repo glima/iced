@@ -232,7 +232,7 @@ impl winit::window::Window for SctkWinitWindow {
     }
 
     fn set_transparent(&self, transparent: bool) {
-        todo!()
+        // Not applicable to Wayland layer-shell surfaces
     }
 
     fn rwh_06_display_handle(
@@ -266,15 +266,15 @@ impl winit::window::Window for SctkWinitWindow {
         position: winit::dpi::Position,
         size: winit::dpi::Size,
     ) {
-        todo!()
+        // IME cursor area not yet wired up for Wayland layer-shell surfaces
     }
 
     fn set_ime_allowed(&self, allowed: bool) {
-        todo!()
+        // IME not yet wired up for Wayland layer-shell surfaces
     }
 
     fn set_ime_purpose(&self, purpose: winit::window::ImePurpose) {
-        todo!()
+        // IME not yet wired up for Wayland layer-shell surfaces
     }
 
     fn set_blur(&self, blur: bool) {
@@ -393,7 +393,7 @@ impl winit::window::Window for SctkWinitWindow {
         &self,
         _hittest: bool,
     ) -> Result<(), winit::error::RequestError> {
-        todo!()
+        Err(RequestError::NotSupported(NotSupportedError::new("set_cursor_hittest is not supported on Wayland layer-shell surfaces.")))
     }
 
     fn surface_position(&self) -> winit::dpi::PhysicalPosition<i32> {
@@ -413,29 +413,29 @@ impl winit::window::Window for SctkWinitWindow {
         &self,
         position: winit::dpi::Position,
     ) -> Result<(), winit::error::RequestError> {
-        todo!()
+        Err(RequestError::NotSupported(NotSupportedError::new("set_cursor_position is not supported on Wayland layer-shell surfaces.")))
     }
 
     fn set_cursor_grab(
         &self,
         mode: winit::window::CursorGrabMode,
     ) -> Result<(), winit::error::RequestError> {
-        todo!()
+        Err(RequestError::NotSupported(NotSupportedError::new("set_cursor_grab is not supported on Wayland layer-shell surfaces.")))
     }
 
     fn safe_area(&self) -> winit::dpi::PhysicalInsets<u32> {
-        todo!()
+        winit::dpi::PhysicalInsets::new(0, 0, 0, 0)
     }
 
     fn request_ime_update(
         &self,
         request: winit::window::ImeRequest,
     ) -> Result<(), winit::window::ImeRequestError> {
-        todo!()
+        Ok(()) // IME not yet wired up for Wayland layer-shell surfaces
     }
 
     fn ime_capabilities(&self) -> Option<winit::window::ImeCapabilities> {
-        todo!()
+        None
     }
 }
 
